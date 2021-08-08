@@ -40,13 +40,19 @@ class _MyAppState extends State<MyApp> {
   ];
 
   void _answerQuestion(int score) {
-    totalScore+= score;
+    totalScore += score;
     setState(() {
       _questionIdx = _questionIdx + 1;
     });
     print(_questionIdx);
     print(totalScore);
+  }
 
+  void _resetQuestion() {
+    setState(() {
+      _questionIdx = 0;
+      totalScore = 0;
+    });
   }
 
   @override
@@ -58,7 +64,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: (_questionIdx < questions.length)
             ? Quiz(questions, _questionIdx, _answerQuestion)
-            : Result(totalScore),
+            : Result(totalScore, _resetQuestion),
       ),
     );
   }
