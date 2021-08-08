@@ -17,6 +17,7 @@ class MyApp extends StatefulWidget {
 // Persistent
 class _MyAppState extends State<MyApp> {
   var _questionIdx = 0;
+  int totalScore = 0;
   final questions = const [
     {
       'questionText': 'What\'s your favourite color?',
@@ -38,11 +39,14 @@ class _MyAppState extends State<MyApp> {
     },
   ];
 
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+    totalScore+= score;
     setState(() {
       _questionIdx = _questionIdx + 1;
     });
     print(_questionIdx);
+    print(totalScore);
+
   }
 
   @override
